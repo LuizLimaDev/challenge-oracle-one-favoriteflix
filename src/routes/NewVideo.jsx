@@ -1,7 +1,15 @@
+import VideoForm from "../components/Forms/VideoForm/VideoForm";
+import { StyledSectionTitle } from "../components/UI/ui-styled-components";
 
+export default function NewVideo() {
 
-export default function NewVide() {
   return (
-    <h1>New Video</h1>
+    <section>
+      <StyledSectionTitle>
+        Qual vídeo deseja adicionar?
+      </StyledSectionTitle>
+
+      <VideoForm />
+    </section>
   )
 }

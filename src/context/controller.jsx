@@ -5,27 +5,47 @@ const DataController = createContext({})
 
 export function DataProvider({ children }) {
   const [dataVideos, setDataVideos] = useState([])
+  const [dataCategories, setDataCategories] = useState([])
   const endpointVideos = '/videos'
-
+  const endpointCategories = '/videocategories'
 
   useEffect(() => {
-    async function fetchData() {
+    fetchData()
+    categoriesData()
+
+  }, [endpointVideos, endpointCategories])
+
+  async function fetchData() {
+    try {
       const response = await api.get(endpointVideos)
       setDataVideos(response.data)
       return response
+    } catch (error) {
+      console.log(error)
     }
+  }
 
+  async function categoriesData() {
+    try {
+      const response = await api.get(endpointCategories)
+      setDataCategories(response.data)
+      return response
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const postData = async (video) => {
+    await api.post('/videos', video)
     fetchData()
-      .catch(console.error)
-
-  }, [endpointVideos])
-
+  }
 
   return (
-    <DataController.Provider value={{ dataVideos }}>
+    <DataController.Provider value={{ dataVideos, dataCategories, setDataVideos, setDataCategories, postData }}>
       {children}
     </DataController.Provider>
   )
 }
+
 
 export default DataController

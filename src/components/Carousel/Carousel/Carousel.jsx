@@ -5,11 +5,11 @@ import DataController from "../../../context/controller";
 
 const videosCategories = [
   {
-    category: 'Front-end',
+    category: 'Frontend',
     color: `${highlightColorBlue}`
   },
   {
-    category: 'Back-end',
+    category: 'Backend',
     color: `${highlightColorGreen}`
   },
   {
@@ -20,6 +20,7 @@ const videosCategories = [
 
 export default function Carousel() {
   const { dataVideos } = useContext(DataController)
+  console.log(dataVideos)
 
   return (
     <section>
@@ -28,8 +29,9 @@ export default function Carousel() {
           key={category.category}
           title={category.category}
           color={category.color}
-          videos={dataVideos.filter(video => video.category === category.category)}
+          videos={dataVideos.filter(video => video.category === category.category ? video : null)}
         />
+
       )}
     </section>
   )
