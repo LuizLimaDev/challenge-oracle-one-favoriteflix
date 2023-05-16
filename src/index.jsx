@@ -6,6 +6,7 @@ import Home from './routes/Home'
 import NewVideo from './routes/NewVideo';
 import EditVideos from './routes/EditVideos';
 import NewCategory from './routes/NewCategory';
+import { DataProvider } from './context/controller';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+  <DataProvider>
+    <RouterProvider router={router} />
+  </DataProvider>
 );
 
