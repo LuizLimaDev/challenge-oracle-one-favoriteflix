@@ -29,7 +29,6 @@ export default function VideoForm() {
 
     postData(video)
 
-    //clear from ??
     setTitle('')
     setUrl('')
     setposter('')
@@ -44,16 +43,17 @@ export default function VideoForm() {
           id="title"
           type="text"
           placeholder="Título"
+          value={title}
           onChange={(event) => {
             setTitle(event.target.value);
           }}
-          value={title}
           required
         />
         <StyledTextField
           id="videoUrl"
           type="url"
           placeholder="Link do vídeo"
+          value={url}
           onChange={(event) => {
             setUrl(event.target.value);
           }}
@@ -63,6 +63,7 @@ export default function VideoForm() {
           id="posterUrl"
           type="url"
           placeholder="Link da imagem"
+          value={poster}
           onChange={(event) => {
             setposter(event.target.value);
           }}
@@ -77,6 +78,7 @@ export default function VideoForm() {
         <StyledTextArea
           id="description"
           placeholder="Descrição"
+          value={description}
           onChange={(event) => {
             setDescription(event.target.value);
           }}

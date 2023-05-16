@@ -18,7 +18,7 @@ export default function SelectCategory({ alterated }) {
   })
 
   return (
-    <StyledSelect onChange={event => alterated(event.target.value)}>
+    <StyledSelect onChange={event => alterated(event.target.value)} >
       {itens.map(item => {
         return <option key={item}>{item}</option>
       })}

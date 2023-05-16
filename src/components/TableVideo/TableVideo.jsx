@@ -7,13 +7,17 @@ function createDate(id, name, description, edit, remove) {
 }
 
 export default function TableVideo() {
-  const { dataVideos } = useContext(DataController)
+  const { dataVideos, deleteData } = useContext(DataController)
 
   const rows = [
     dataVideos.map((item) => (
       createDate(item.id, item.title, item.description, 'Editar', 'Remover')
     ))
   ];
+
+  function deleteVideo(id) {
+    deleteData(id)
+  }
 
   return (
     <div style={{ display: "flex", alignContent: "start", justifyContent: "center" }}>
@@ -39,7 +43,7 @@ export default function TableVideo() {
                 </TableCell>
                 <TableCell align="center">{item.description}</TableCell>
                 <TableCell align="center">{item.edit}</TableCell>
-                <TableCell align="center">{item.remove}</TableCell>
+                <TableCell align="center" onClick={(e) => deleteVideo(item.id)}>{item.remove}</TableCell>
               </TableRow>
             ))}
           </TableBody>
