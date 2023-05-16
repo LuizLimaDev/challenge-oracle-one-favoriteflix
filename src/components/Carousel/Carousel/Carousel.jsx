@@ -20,7 +20,6 @@ const videosCategories = [
 
 export default function Carousel() {
   const { dataVideos } = useContext(DataController)
-  console.log(dataVideos)
 
   return (
     <section>

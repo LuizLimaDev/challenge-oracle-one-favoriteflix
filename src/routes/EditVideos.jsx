@@ -1,7 +1,11 @@
-
+import { StyledSectionTitle } from '../components/UI/ui-styled-components';
+import TableVideo from '../components/TableVideo/TableVideo';
 
 export default function EditVideos() {
   return (
-    <h1>Edit Videos</h1>
+    <>
+      <StyledSectionTitle>Editar vídeos</StyledSectionTitle>
+      <TableVideo />
+    </>
   )
 }
