@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { Paper, Table, TableBody, TableRow, TableContainer, TableCell, TableHead } from "@mui/material";
 import DataController from "../../context/controller";
+import { Link } from "react-router-dom";
 
 function createDate(id, name, description, edit, remove) {
   return { id, name, description, edit, remove };
 }
 
 export default function TableVideo() {
-  const { dataVideos, deleteData } = useContext(DataController)
+  const { dataVideos, deleteDataVideo } = useContext(DataController)
 
   const rows = [
     dataVideos.map((item) => (
@@ -16,7 +17,7 @@ export default function TableVideo() {
   ];
 
   function deleteVideo(id) {
-    deleteData(id)
+    deleteDataVideo(id)
   }
 
   return (
@@ -42,8 +43,17 @@ export default function TableVideo() {
                   {item.name}
                 </TableCell>
                 <TableCell align="center">{item.description}</TableCell>
-                <TableCell align="center">{item.edit}</TableCell>
-                <TableCell align="center" onClick={(e) => deleteVideo(item.id)}>{item.remove}</TableCell>
+                <TableCell align="center">
+                  <Link to={`/videodetails/${item.id}`}>
+                    {item.edit}
+                  </Link>
+                </TableCell>
+                <TableCell
+                  align="center"
+                  onClick={(e) => deleteVideo(item.id)}
+                  style={{ cursor: 'pointer' }}>
+                  {item.remove}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

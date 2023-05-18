@@ -6,18 +6,16 @@ const DataController = createContext({})
 export function DataProvider({ children }) {
   const [dataVideos, setDataVideos] = useState([])
   const [dataCategories, setDataCategories] = useState([])
-  const endpointVideos = '/videos'
-  const endpointCategories = '/videocategories'
 
   useEffect(() => {
-    fetchData()
+    videosData()
     categoriesData()
 
-  }, [endpointVideos, endpointCategories])
+  }, [])
 
-  async function fetchData() {
+  async function videosData() {
     try {
-      const response = await api.get(endpointVideos)
+      const response = await api.get('/videos')
       setDataVideos(response.data)
       return response
     } catch (error) {
@@ -27,7 +25,7 @@ export function DataProvider({ children }) {
 
   async function categoriesData() {
     try {
-      const response = await api.get(endpointCategories)
+      const response = await api.get('/videocategories')
       setDataCategories(response.data)
       return response
     } catch (error) {
@@ -35,19 +33,28 @@ export function DataProvider({ children }) {
     }
   }
 
-  const postData = async (video) => {
+  const postDataVideo = async (video) => {
     try {
       await api.post('/videos', video)
-      fetchData()
+      videosData()
     } catch (error) {
       console.log(error)
     }
   }
 
-  const deleteData = async (id) => {
+  const postDataCategory = async (category) => {
+    try {
+      await api.post('/videocategories', category)
+      categoriesData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deleteDataVideo = async (id) => {
     try {
       await api.delete(`/videos/${id}`)
-      fetchData()
+      videosData()
     } catch (error) {
       console.log(error)
     }
@@ -59,8 +66,9 @@ export function DataProvider({ children }) {
       dataCategories,
       setDataVideos,
       setDataCategories,
-      postData,
-      deleteData
+      postDataVideo,
+      postDataCategory,
+      deleteDataVideo
     }}>
       {children}
     </DataController.Provider>

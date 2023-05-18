@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './routes/Home'
-import NewVideo from './routes/NewVideo';
-import EditVideos from './routes/EditVideos';
-import NewCategory from './routes/NewCategory';
 import { DataProvider } from './context/controller';
+import Home from './pages/Home'
+import NewVideo from './pages/NewVideo';
+import EditVideos from './pages/EditVideos';
+import NewCategory from './pages/NewCategory';
+import VideoDetails from './pages/VideoDetails';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: '/newcategory',
         element: <NewCategory />
+      }
+      ,
+      {
+        path: '/videodetails/:id',
+        element: <VideoDetails />
       }
     ]
   }

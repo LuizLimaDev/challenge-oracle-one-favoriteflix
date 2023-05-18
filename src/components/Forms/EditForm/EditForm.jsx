@@ -1,44 +1,43 @@
-import { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
 import { StyledForm, StyledTextField, StyledTextArea, StyledButton } from '../../UI/ui-styled-components';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import DataController from '../../../context/controller';
-// import api from '../../../service/api';
 
-export default function VideoForm() {
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
-  const [poster, setposter] = useState('')
-  const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
+// const select = document.querySelector('.select')
+// const index = select.selectedIndex
+// let text = select.options[index].text
+// console.log(text)
 
-  const { postDataVideo } = useContext(DataController)
+export default function EditForm() {
+  const { postData, dataVideos } = useContext(DataController)
+  const { id } = useParams()
+  const videoDetails = dataVideos[id - 1]
 
-  useEffect(() => { }, [])
+  // se a categoria for diferente... deletar o video da categoria antiga
+  // como preencher o option com a categoria q vem da API?
+  // console.log(videoDetails.category)
 
+
+  const [title, setTitle] = useState(`${videoDetails.title}`)
+  const [url, setUrl] = useState(`${videoDetails.url}`)
+  const [poster, setposter] = useState(`${videoDetails.poster}`)
+  const [category, setCategory] = useState(`{${videoDetails.category}}`)
+  const [description, setDescription] = useState(`${videoDetails.description}`)
 
   async function onSave(event) {
     event.preventDefault();
 
     const video = {
-      category: category,
-      title: title,
-      url: url,
-      poster: poster,
-      description: description
+      category,
+      title,
+      url,
+      poster,
+      description
     }
 
-    fetch(`https://json-server-favoriteflix-np0z3b1i5-devluizlima.vercel.app/produtos`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ video })
-    })
-
-
-    postDataVideo(video)
+    postData(video)
 
     setTitle('')
     setUrl('')
@@ -50,6 +49,11 @@ export default function VideoForm() {
   return (
     <>
       <StyledForm onSubmit={onSave}>
+        <h1>
+          <span style={{ color: `${highlightColorRed}` }}>Editando: </span>
+          {videoDetails.title}
+        </h1>
+
         <StyledTextField
           id="title"
           type="text"
@@ -85,6 +89,7 @@ export default function VideoForm() {
           alterated={(value) => {
             setCategory(value)
           }}
+
           required
         />
         <StyledTextArea
