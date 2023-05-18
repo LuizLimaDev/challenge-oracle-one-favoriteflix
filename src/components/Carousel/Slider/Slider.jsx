@@ -4,15 +4,15 @@ import settings from "./settings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function Slider({ title, color, videos }) {
+export default function Slider({ category, videos }) {
   return (
     <StyledSection>
-      <StyledCategoryTitle color={color}>{title}</StyledCategoryTitle>
+      <StyledCategoryTitle color={category.color}>{category.title}</StyledCategoryTitle>
       <Slick {...settings}>
-        {videos.map((item) => (
-          <StyledContainerCard key={item.id} >
-            <StyledVideoImg src={item.poster} alt={item.title} />
-            <StyledVideoTitle>{item.title}</StyledVideoTitle>
+        {videos.map((video) => (
+          <StyledContainerCard key={video.id} >
+            <StyledVideoImg src={video.poster} alt={video.title} />
+            <StyledVideoTitle>{video.title}</StyledVideoTitle>
           </StyledContainerCard>
         ))}
       </Slick>

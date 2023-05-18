@@ -1,29 +1,25 @@
-import { useContext } from "react";
-import DataController from "../../../context/controller";
+import { useEffect, useState } from "react";
 import { StyledSelect } from './styled-SelectCategory';
 
-let itens = [
-  'Escolha uma categoria...',
-];
-
 export default function SelectCategory({ alterated }) {
-  const { dataCategories } = useContext(DataController)
+  const [categories, setCategories] = useState([])
 
-  dataCategories.forEach((item) => {
-    if (itens.includes(item.title)) {
-      return
-    }
+  function getCategories() {
+    fetch('https://json-server-favoriteflix.vercel.app/videocategories')
+      .then(response => response.json())
+      .then(data => setCategories(data))
+      .catch(error => console.log(error))
+  }
 
-    itens.push(item.title)
-  })
-
-
+  useEffect(() => {
+    getCategories()
+  }, [])
 
   return (
     <StyledSelect className="select" onChange={event => alterated(event.target.value)} >
-      {itens.map(item => {
-        return <option key={item}>{item}</option>
-      })}
+      {categories.map((category) => (
+        <option key={category.id}>{category.title}</option>
+      ))}
     </StyledSelect>
   )
 }
