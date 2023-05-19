@@ -19,19 +19,18 @@ const videosCategories = [
 ]
 
 export default function Carousel() {
-  const { dataVideos, dataCategories } = useContext(DataController)
-  //como dar map do array do useContext
-
+  const { dataVideos } = useContext(DataController)
 
   return (
     <section>
-      {videosCategories.map((category, index) =>
-        < Slider
-          key={index}
+      {videosCategories.map(category =>
+        <Slider
+          key={category.category}
           title={category.category}
           color={category.color}
           videos={dataVideos.filter(video => video.category === category.category ? video : null)}
         />
+
       )}
     </section>
   )
