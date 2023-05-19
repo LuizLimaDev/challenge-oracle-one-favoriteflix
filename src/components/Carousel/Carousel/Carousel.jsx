@@ -1,40 +1,38 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Slider from "../Slider/Slider";
+import { highlightColorBlue, highlightColorGreen, highlightColorYellow } from "../../UI/variables";
+import DataController from "../../../context/controller";
+
+const videosCategories = [
+  {
+    category: 'Frontend',
+    color: `${highlightColorBlue}`
+  },
+  {
+    category: 'Backend',
+    color: `${highlightColorGreen}`
+  },
+  {
+    category: 'Devops',
+    color: `${highlightColorYellow}`
+  }
+]
 
 export default function Carousel() {
-  const [categories, setCategories] = useState([])
-  const [videos, setVideos] = useState([])
+  const { dataVideos, dataCategories } = useContext(DataController)
+  //como dar map do array do useContext
 
-  function getCategories() {
-    fetch('https://json-server-favoriteflix.vercel.app/videocategories')
-      .then(response => response.json())
-      .then(data => setCategories(data))
-      .catch(error => console.log(error))
-  }
-
-  function getVideos() {
-    fetch('https://json-server-favoriteflix.vercel.app/videos')
-      .then(response => response.json())
-      .then(data => setVideos(data))
-      .catch(error => console.log(error))
-  }
-
-  useEffect(() => {
-    getCategories()
-    getVideos()
-
-  }, [])
-  console.log(videos)
 
   return (
     <section>
-      {categories.map((category) => (
+      {videosCategories.map((category, index) =>
         < Slider
-          key={category.id}
-          category={category}
-          videos={videos.filter(video => video.category === category.title ? video : null)}
+          key={index}
+          title={category.category}
+          color={category.color}
+          videos={dataVideos.filter(video => video.category === category.category ? video : null)}
         />
-      ))}
+      )}
     </section>
   )
 }

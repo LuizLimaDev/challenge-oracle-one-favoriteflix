@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
 import { StyledForm, StyledTextField, StyledTextArea, StyledButton } from '../../UI/ui-styled-components';
 import SelectCategory from '../SelectCategory/SelectCategory';
+import DataController from '../../../context/controller';
+// import api from '../../../service/api';
 
 export default function VideoForm() {
   const [title, setTitle] = useState('')
@@ -11,22 +13,32 @@ export default function VideoForm() {
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
 
-  function onSave(event) {
+  const { postDataVideo } = useContext(DataController)
+
+  useEffect(() => { }, [])
+
+
+  async function onSave(event) {
     event.preventDefault();
 
-    fetch(`https://json-server-favoriteflix.vercel.app/produtos`, {
+    const video = {
+      category: category,
+      title: title,
+      url: url,
+      poster: poster,
+      description: description
+    }
+
+    fetch(`https://json-server-favoriteflix-np0z3b1i5-devluizlima.vercel.app/produtos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        category: category,
-        title: title,
-        url: url,
-        poster: poster,
-        description: description
-      })
+      body: JSON.stringify({ video })
     })
+
+
+    postDataVideo(video)
 
     setTitle('')
     setUrl('')
