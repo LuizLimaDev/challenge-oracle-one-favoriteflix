@@ -1,0 +1,77 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "category": "Frontend",
+      "title": "Caminhos dev Front-End",
+      "url": "https://www.youtube.com/watch?v=30nlBGjPRYM",
+      "poster": "https://i.ytimg.com/vi/30nlBGjPRYM/maxresdefault.jpg",
+      "description": "Caminhos para ser um dev Front-End"
+    },
+    {
+      "id": 2,
+      "category": "Frontend",
+      "title": "Como se tornar dev Front-End",
+      "url": "https://www.youtube.com/watch?v=LqXqBgIUbJg",
+      "poster": "https://i.ytimg.com/vi/LqXqBgIUbJg/maxresdefault.jpg",
+      "description": "Como se tornar um desenvolvedor FRONTEND? (Passo a passo / Roadmap)"
+    },
+    {
+      "id": 3,
+      "category": "Frontend",
+      "title": "Curso JavaScript #01",
+      "url": "https://www.youtube.com/watch?v=TkD0QMyBa28",
+      "poster": "https://i.ytimg.com/vi/rQseLH4LDXQ/maxresdefault.jpg",
+      "description": "Curso JavaScript Matheus Battisti"
+    },
+    {
+      "id": 4,
+      "category": "Frontend",
+      "title": "Como começar a programar Front-end",
+      "url": "https://www.youtube.com/watch?v=v0g-bySzHH0",
+      "poster": "https://i.ytimg.com/vi/v0g-bySzHH0/maxresdefault.jpg",
+      "description": "Como começar a programar Front-end Cubos Academy"
+    },
+    {
+      "id": 5,
+      "category": "Frontend",
+      "title": "5 chaves para o Front-end",
+      "url": "https://www.youtube.com/watch?v=-_X6PhkjpzU",
+      "poster": "https://i.ytimg.com/vi/-_X6PhkjpzU/maxresdefault.jpg",
+      "description": "5 chaves para o primeiro emprego"
+    },
+    {
+      "id": 6,
+      "category": "Backend",
+      "title": "Bastidores dev Back-end",
+      "url": "https://www.youtube.com/watch?v=SqW7Zl_BaaY",
+      "poster": "https://i.ytimg.com/vi/SqW7Zl_BaaY/maxresdefault.jpg",
+      "description": "Guia para dominar o Back-end OnebitCode"
+    },
+    {
+      "id": 7,
+      "category": "Devops",
+      "title": "Introdução ao Devops (Inglês)",
+      "url": "https://www.youtube.com/watch?v=Me3ea4nUt0U",
+      "poster": "https://i.ytimg.com/vi/Me3ea4nUt0U/maxresdefault.jpg",
+      "description": "Como iniciar a carreira Devops"
+    }
+  ],
+  "videocategories": [
+    {
+      "id": 1,
+      "title": "Frontend",
+      "color": "#B3F7F6"
+    },
+    {
+      "id": 2,
+      "title": "Backend",
+      "color": "#7DD076"
+    },
+    {
+      "id": 3,
+      "title": "Devops",
+      "color": "#F1F592"
+    }
+  ]
+}

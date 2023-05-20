@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './routes/Home'
-import NewVideo from './routes/NewVideo';
-import EditVideos from './routes/EditVideos';
-import NewCategory from './routes/NewCategory';
+import Home from './pages/Home'
+import NewVideo from './pages/NewVideo';
+import EditVideos from './pages/EditData';
+import NewCategory from './pages/NewCategory';
 import { DataProvider } from './context/controller';
 
 const router = createBrowserRouter([

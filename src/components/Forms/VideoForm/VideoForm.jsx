@@ -1,20 +1,19 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
-import { StyledForm, StyledTextField, StyledTextArea, StyledButton } from '../../UI/ui-styled-components';
+import { StyledForm, StyledTextArea, StyledButton, StyledTextField } from '../../UI/ui-styled-components';
 import DataController from '../../../context/controller';
 
 export default function VideoForm() {
-
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
   const [poster, setposter] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
+  const [sended, setSended] = useState(false)
 
-  const { postData } = useContext(DataController)
-
+  const { postData, videoData } = useContext(DataController)
 
   async function onSave(event) {
     event.preventDefault();
@@ -28,17 +27,20 @@ export default function VideoForm() {
     }
 
     postData(video)
+    videoData()
 
     setTitle('')
     setUrl('')
     setposter('')
     setCategory('')
     setDescription('')
+
+    setSended(true)
   }
 
   return (
     <>
-      <StyledForm onSubmit={onSave}>
+      <StyledForm onSubmit={onSave} >
         <StyledTextField
           id="title"
           type="text"
@@ -83,7 +85,6 @@ export default function VideoForm() {
             setDescription(event.target.value);
           }}
         />
-
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.5rem" }}>
           <StyledButton bgcolor={secondaryGray}>Limpar</StyledButton>
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
@@ -91,6 +92,7 @@ export default function VideoForm() {
         </div>
 
       </StyledForm>
+      {sended && <Navigate to="/" />}
     </>
   )
 }

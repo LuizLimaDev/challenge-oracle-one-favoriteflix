@@ -1,21 +1,19 @@
-import { useContext } from "react";
-import { Paper, Table, TableBody, TableRow, TableContainer, TableCell, TableHead } from "@mui/material";
-import DataController from "../../context/controller";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 function createDate(id, name, description, edit, remove) {
   return { id, name, description, edit, remove };
 }
 
-export default function TableVideo() {
-  const { dataVideos, deleteData } = useContext(DataController)
+export default function TableVideo({ dataType, deleteData, tableType }) {
+  const tableElementType = tableType;
 
   const rows = [
-    dataVideos.map((item) => (
+    dataType.map((item) => (
       createDate(item.id, item.title, item.description, 'Editar', 'Remover')
     ))
   ];
 
-  function deleteVideo(id) {
+  function deleteElement(id) {
     deleteData(id)
   }
 
@@ -26,7 +24,7 @@ export default function TableVideo() {
           <TableHead>
             <TableRow>
               <TableCell><strong>Nome</strong></TableCell>
-              <TableCell align="center"><strong>Descrição</strong></TableCell>
+              {tableElementType === 'videos' && <TableCell align="center"><strong>Descrição</strong></TableCell>}
               <TableCell align="center"><strong>Editar</strong></TableCell>
               <TableCell align="center"><strong>Remover</strong></TableCell>
             </TableRow>
@@ -41,9 +39,9 @@ export default function TableVideo() {
                 <TableCell component="th" scope="row" align="left" >
                   {item.name}
                 </TableCell>
-                <TableCell align="center">{item.description}</TableCell>
+                {tableElementType === 'videos' && <TableCell align="center">{item.description}</TableCell>}
                 <TableCell align="center">{item.edit}</TableCell>
-                <TableCell align="center" onClick={(e) => deleteVideo(item.id)}>{item.remove}</TableCell>
+                <TableCell align="center" onClick={(e) => deleteElement(item.id)} style={{ cursor: "pointer" }}>{item.remove}</TableCell>
               </TableRow>
             ))}
           </TableBody>

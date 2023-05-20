@@ -6,20 +6,16 @@ const DataController = createContext({})
 export function DataProvider({ children }) {
   const [dataVideos, setDataVideos] = useState([])
   const [dataCategories, setDataCategories] = useState([])
-  const endpointVideos = '/videos'
-  const endpointCategories = '/videocategories'
 
   useEffect(() => {
-    fetchData()
+    videoData()
     categoriesData()
+  }, [])
 
-  }, [endpointVideos, endpointCategories])
-
-  async function fetchData() {
+  async function videoData() {
     try {
-      const response = await api.get(endpointVideos)
+      const response = await api.get('/videos')
       setDataVideos(response.data)
-      return response
     } catch (error) {
       console.log(error)
     }
@@ -27,7 +23,7 @@ export function DataProvider({ children }) {
 
   async function categoriesData() {
     try {
-      const response = await api.get(endpointCategories)
+      const response = await api.get('/videocategories')
       setDataCategories(response.data)
       return response
     } catch (error) {
@@ -38,7 +34,6 @@ export function DataProvider({ children }) {
   const postData = async (video) => {
     try {
       await api.post('/videos', video)
-      fetchData()
     } catch (error) {
       console.log(error)
     }
@@ -47,7 +42,25 @@ export function DataProvider({ children }) {
   const deleteData = async (id) => {
     try {
       await api.delete(`/videos/${id}`)
-      fetchData()
+      videoData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const postCategory = async (category) => {
+    try {
+      await api.post('/videocategories', category)
+      categoriesData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const deleteCategory = async (id) => {
+    try {
+      await api.delete(`/videocategories/${id}`)
+      categoriesData()
     } catch (error) {
       console.log(error)
     }
@@ -57,15 +70,16 @@ export function DataProvider({ children }) {
     <DataController.Provider value={{
       dataVideos,
       dataCategories,
-      setDataVideos,
-      setDataCategories,
+      videoData,
+      categoriesData,
       postData,
-      deleteData
+      deleteData,
+      postCategory,
+      deleteCategory
     }}>
       {children}
     </DataController.Provider>
   )
 }
-
 
 export default DataController
