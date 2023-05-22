@@ -43,6 +43,7 @@ export default function VideoForm() {
 
     if (id !== undefined) {
       updateVideo(id, video)
+
     } else {
       postVideo(video)
     }
@@ -92,6 +93,7 @@ export default function VideoForm() {
           alterated={(value) => {
             setCategory(value)
           }}
+          selectedOption={category}
           required
         />
         <StyledTextArea

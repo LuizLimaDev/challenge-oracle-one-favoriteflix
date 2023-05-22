@@ -51,16 +51,6 @@ export function DataProvider({ children }) {
     }
   }
 
-
-  const updateVideo = async (id, data) => {
-    try {
-      await api.update(`/videos/${id}`, data)
-      videoData()
-    } catch (error) {
-      setError(error)
-    }
-  }
-
   const postCategory = async (category) => {
     try {
       await api.post('/videocategories', category)
@@ -83,6 +73,15 @@ export function DataProvider({ children }) {
     try {
       await api.put(`/videocategories/${id}`, data)
       categoriesData()
+    } catch (error) {
+      setError(error)
+    }
+  }
+
+  const updateVideo = async (id, data) => {
+    try {
+      await api.put(`/videos/${id}`, data)
+      videoData()
     } catch (error) {
       setError(error)
     }

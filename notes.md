@@ -7,7 +7,7 @@
 # Editar categoria, assim que clicar preencher os dados do formulario - ok
 
 # Editar videos, assim que clicar preencher os dados do formulario
+**como selecionar e exibir a option selecionada, de acordo com o video em edicao?** - ok
 **logica condicional de atualizar ou postar**
-**como selecionar e exibir a option selecionada, de acordo com o video em edicao?**
 
-# Play nos videos ao clicar
+# Play nos videos ao clicar 

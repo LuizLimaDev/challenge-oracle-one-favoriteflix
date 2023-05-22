@@ -12,8 +12,8 @@ export default function CategoryForm() {
     dataCategories,
     uptateCategory
   } = useContext(DataController)
-
   const { id } = useParams()
+
   const [categoryTitle, setCategoryTitle] = useState('')
   const [color, setColor] = useState('')
   const [sended, setSended] = useState(false)
