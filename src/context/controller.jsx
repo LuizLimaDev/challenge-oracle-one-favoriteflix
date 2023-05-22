@@ -37,6 +37,7 @@ export function DataProvider({ children }) {
   const postVideo = async (video) => {
     try {
       await api.post('/videos', video)
+      videoData()
     } catch (error) {
       setError(error)
     }

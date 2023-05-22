@@ -46,8 +46,9 @@ export default function VideoForm() {
 
     } else {
       postVideo(video)
-      videoData()
     }
+
+    videoData()
 
     setTitle('')
     setUrl('')
