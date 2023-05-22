@@ -72,6 +72,11 @@
       "id": 3,
       "title": "Devops",
       "color": "#F1F592"
+    },
+    {
+      "title": "UX IX",
+      "color": "#f85bfb",
+      "id": 4
     }
   ]
 }

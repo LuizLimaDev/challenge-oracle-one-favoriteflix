@@ -26,9 +26,17 @@ const router = createBrowserRouter([
         element: <EditVideos />
       },
       {
-        path: '/newcategory',
+        path: '/newcategory/',
         element: <NewCategory />
-      }
+      },
+      {
+        path: '/newcategory/:id',
+        element: <NewCategory />
+      },
+      {
+        path: '/newvideo/:id',
+        element: <NewVideo />
+      },
     ]
   }
 ])

@@ -1,10 +1,11 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function createDate(id, name, description, edit, remove) {
   return { id, name, description, edit, remove };
 }
 
-export default function TableVideo({ dataType, deleteData, tableType }) {
+export default function TableData({ dataType, deleteData, tableType }) {
   const tableElementType = tableType;
 
   const rows = [
@@ -40,8 +41,22 @@ export default function TableVideo({ dataType, deleteData, tableType }) {
                   {item.name}
                 </TableCell>
                 {tableElementType === 'videos' && <TableCell align="center">{item.description}</TableCell>}
-                <TableCell align="center">{item.edit}</TableCell>
-                <TableCell align="center" onClick={(e) => deleteElement(item.id)} style={{ cursor: "pointer" }}>{item.remove}</TableCell>
+
+                <TableCell align="center">
+                  <Link to={tableType === 'categories'
+                    ? `/newcategory/${item.id}`
+                    : `/newvideo/${item.id}`}
+                  >
+                    {item.edit}
+                  </Link>
+                </TableCell>
+
+                <TableCell
+                  align="center"
+                  onClick={(e) => deleteElement(item.id)}
+                  style={{ cursor: "pointer" }}>
+                  {item.remove}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -6,6 +6,8 @@ const DataController = createContext({})
 export function DataProvider({ children }) {
   const [dataVideos, setDataVideos] = useState([])
   const [dataCategories, setDataCategories] = useState([])
+  const [error, setError] = useState(null)
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     videoData()
@@ -16,8 +18,9 @@ export function DataProvider({ children }) {
     try {
       const response = await api.get('/videos')
       setDataVideos(response.data)
+      setLoading(false)
     } catch (error) {
-      console.log(error)
+      setError(error)
     }
   }
 
@@ -25,26 +28,36 @@ export function DataProvider({ children }) {
     try {
       const response = await api.get('/videocategories')
       setDataCategories(response.data)
-      return response
+      setLoading(false)
     } catch (error) {
-      console.log(error)
+      setError(error)
     }
   }
 
-  const postData = async (video) => {
+  const postVideo = async (video) => {
     try {
       await api.post('/videos', video)
     } catch (error) {
-      console.log(error)
+      setError(error)
     }
   }
 
-  const deleteData = async (id) => {
+  const deleteVideo = async (id) => {
     try {
       await api.delete(`/videos/${id}`)
       videoData()
     } catch (error) {
-      console.log(error)
+      setError(error)
+    }
+  }
+
+
+  const updateVideo = async (id, data) => {
+    try {
+      await api.update(`/videos/${id}`, data)
+      videoData()
+    } catch (error) {
+      setError(error)
     }
   }
 
@@ -53,7 +66,7 @@ export function DataProvider({ children }) {
       await api.post('/videocategories', category)
       categoriesData()
     } catch (error) {
-      console.log(error)
+      setError(error)
     }
   }
 
@@ -62,7 +75,16 @@ export function DataProvider({ children }) {
       await api.delete(`/videocategories/${id}`)
       categoriesData()
     } catch (error) {
-      console.log(error)
+      setError(error)
+    }
+  }
+
+  const uptateCategory = async (id, data) => {
+    try {
+      await api.put(`/videocategories/${id}`, data)
+      categoriesData()
+    } catch (error) {
+      setError(error)
     }
   }
 
@@ -70,12 +92,16 @@ export function DataProvider({ children }) {
     <DataController.Provider value={{
       dataVideos,
       dataCategories,
+      error,
+      isLoading,
       videoData,
       categoriesData,
-      postData,
-      deleteData,
+      postVideo,
+      deleteVideo,
+      updateVideo,
       postCategory,
-      deleteCategory
+      deleteCategory,
+      uptateCategory
     }}>
       {children}
     </DataController.Provider>

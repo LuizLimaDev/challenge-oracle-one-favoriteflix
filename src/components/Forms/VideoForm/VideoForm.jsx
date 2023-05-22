@@ -1,19 +1,34 @@
-import { useContext, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
 import { StyledForm, StyledTextArea, StyledButton, StyledTextField } from '../../UI/ui-styled-components';
 import DataController from '../../../context/controller';
 
 export default function VideoForm() {
+  const {
+    postVideo,
+    videoData,
+    dataVideos,
+    updateVideo
+  } = useContext(DataController)
+
+  const { id } = useParams('')
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
   const [poster, setposter] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
-  const [sended, setSended] = useState(false)
 
-  const { postData, videoData } = useContext(DataController)
+  useEffect(() => {
+    if (id !== undefined) {
+      setTitle(dataVideos[id - 1].title)
+      setUrl(dataVideos[id - 1].url)
+      setposter(dataVideos[id - 1].poster)
+      setCategory(dataVideos[id - 1].category)
+      setDescription(dataVideos[id - 1].description)
+    }
+  }, [id, dataVideos])
 
   async function onSave(event) {
     event.preventDefault();
@@ -26,16 +41,18 @@ export default function VideoForm() {
       description
     }
 
-    postData(video)
-    videoData()
+    if (id !== undefined) {
+      updateVideo(id, video)
+    } else {
+      postVideo(video)
+    }
 
+    videoData()
     setTitle('')
     setUrl('')
     setposter('')
     setCategory('')
     setDescription('')
-
-    setSended(true)
   }
 
   return (
@@ -92,7 +109,6 @@ export default function VideoForm() {
         </div>
 
       </StyledForm>
-      {sended && <Navigate to="/" />}
     </>
   )
 }

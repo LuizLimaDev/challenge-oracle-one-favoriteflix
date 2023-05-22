@@ -3,6 +3,7 @@ import Slick from "react-slick";
 import settings from "./settings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 export default function Slider({ title, color, videos }) {
   return (
@@ -10,10 +11,12 @@ export default function Slider({ title, color, videos }) {
       <StyledCategoryTitle color={color}>{title}</StyledCategoryTitle>
       <Slick {...settings}>
         {videos.map((item) => (
-          <StyledContainerCard key={item.id} >
-            <StyledVideoImg src={item.poster} alt={item.title} />
-            <StyledVideoTitle>{item.title}</StyledVideoTitle>
-          </StyledContainerCard>
+          <Link to={item.url} key={item.id}>
+            <StyledContainerCard  >
+              <StyledVideoImg src={item.poster} alt={item.title} />
+              <StyledVideoTitle>{item.title}</StyledVideoTitle>
+            </StyledContainerCard>
+          </Link>
         ))}
       </Slick>
     </StyledSection>
