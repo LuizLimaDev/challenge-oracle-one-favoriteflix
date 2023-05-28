@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { RxGear } from "react-icons/rx";
 import { MdAddToQueue } from "react-icons/md";
 import { highlightColorRed, primaryGray } from '../../UI/variables';
+import { primaryFontColor } from "../../UI/variables";
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -16,6 +17,11 @@ export const StyledHeader = styled.header`
   border-bottom-right-radius: 1.5rem;
 
   background-color: rgba(0, 0, 0, .125);
+
+  /* @media (max-width: 400px) {
+    align-items: flex-start;
+    height: 20vh;
+  } */
 `
 
 export const StyledContainer = styled.div`
@@ -43,4 +49,11 @@ export const StyledIconConfig = styled(RxGear)`
     &:hover{
     color: ${highlightColorRed};
 }
+`
+
+export const StyledWellcome = styled.h1`
+  margin-top: 1rem;
+
+  text-align: center;
+  color: ${primaryFontColor};
 `

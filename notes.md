@@ -10,4 +10,13 @@
 **como selecionar e exibir a option selecionada, de acordo com o video em edicao?** - ok
 **logica condicional de atualizar ou postar**
 
-# Play nos videos ao clicar 
+# Play nos videos ao clicar - ok
+**Modal ?**
+
+# Paginas de erro 440 e etcc
+
+# Pagina de loading
+
+# validacoes do formulario?
+
+# mobile

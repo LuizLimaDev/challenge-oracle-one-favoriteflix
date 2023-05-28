@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-
+import banner from '../../assets/banner.jpg'
 
 export const StyledContainer = styled.div`
   display: flex;
@@ -7,13 +7,18 @@ export const StyledContainer = styled.div`
   align-items: center;
 
   position: relative;
-  padding: .5rem 6rem;
-`
-
-export const StyledImg = styled.img`
   width: 94%;
   height: 25rem;
+  padding: .5rem 6rem;
+  margin: 1.25rem auto;
   border-radius: 1.625rem;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${banner});
+  background-size: cover;
+
+  @media (max-width: 400px) {
+    display: none
+  }
 `
 
 export const StyledContainerDescription = styled.div`
@@ -23,5 +28,9 @@ export const StyledContainerDescription = styled.div`
 
   width: 26%;
   position: absolute;
-  right: 11%;
+  right: 5%;
+
+  @media (max-width: 400px) {
+    display: none
+  }
 `
