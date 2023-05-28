@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import Slider from "../Slider/Slider";
 import DataController from "../../../context/controller";
-import { useNavigation } from "react-router-dom";
 import Loading from "../../Loading/Loading";
 
 export default function Carousel() {
-  const { dataVideos, dataCategories } = useContext(DataController)
-  const natigation = useNavigation();
-  console.log(natigation);
+  const { dataVideos, dataCategories, isLoading } = useContext(DataController)
 
   return (
     <section>
-      {natigation.state === "loading" && <Loading />}
+      {isLoading === true && <Loading />}
       {dataCategories.map(category => {
         return (
           < Slider
