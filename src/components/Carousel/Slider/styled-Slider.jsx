@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { primaryFontColor } from "../../UI/variables"
 
 export const StyledSection = styled.section`
-width: 93%;
+width: 90%;
 margin: 0 3rem 3rem 3rem;
 `
 

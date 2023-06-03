@@ -2,12 +2,13 @@ import { useContext } from "react";
 import Slider from "../Slider/Slider";
 import DataController from "../../../context/controller";
 import Loading from "../../Loading/Loading";
+import { ContainerCarousel } from "./styled-Carousel";
 
 export default function Carousel() {
   const { dataVideos, dataCategories, isLoading } = useContext(DataController)
 
   return (
-    <section>
+    <ContainerCarousel>
       {isLoading === true && <Loading />}
       {dataCategories.map(category => {
         return (
@@ -19,6 +20,6 @@ export default function Carousel() {
           />
         )
       })}
-    </section>
+    </ContainerCarousel>
   )
 }

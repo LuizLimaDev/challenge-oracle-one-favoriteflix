@@ -13,14 +13,15 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  margin: 0 auto;
   width: 100vw;
   height: 100vh;
+  position: relative;
 
-  max-width: 1440px;
+  margin: 0 auto;
+
+  overflow-x: hidden;
   
   color: ${primaryFontColor};
   background-color: ${tertiaryGray};
 }
-
 `

@@ -9,6 +9,8 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
+  margin: 0 auto;
+
   width: 100%;
   max-width: 1440px;
   height: 6vh;
@@ -17,11 +19,6 @@ export const StyledHeader = styled.header`
   border-bottom-right-radius: 1.5rem;
 
   background-color: rgba(0, 0, 0, .125);
-
-  /* @media (max-width: 400px) {
-    align-items: flex-start;
-    height: 20vh;
-  } */
 `
 
 export const StyledContainer = styled.div`

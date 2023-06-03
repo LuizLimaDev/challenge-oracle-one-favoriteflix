@@ -7,6 +7,7 @@ import NewVideo from './pages/NewVideo';
 import EditVideos from './pages/EditData';
 import NewCategory from './pages/NewCategory';
 import { DataProvider } from './context/controller';
+import Modal from './components/Modal/Modal';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/newvideo/:id',
         element: <NewVideo />
+      },
+      {
+        path: '/playvideo/:id',
+        element: <Modal />
       },
     ]
   }

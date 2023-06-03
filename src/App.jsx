@@ -3,7 +3,6 @@ import { GlobalStyle } from './components/GlobalStyle';
 import Header from "./components/Navigation/Header/Header";
 
 function App() {
-
   return (
     <div>
       <GlobalStyle />
