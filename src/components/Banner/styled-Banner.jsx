@@ -16,8 +16,10 @@ export const StyledContainer = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${banner});
   background-size: cover;
 
-  @media (max-width: 400px) {
-    display: none
+  @media (max-width: 450px) {
+    background: none;
+    width: 25rem;
+    height: 5rem;
   }
 `
 
@@ -30,7 +32,13 @@ export const StyledContainerDescription = styled.div`
   position: absolute;
   right: 5%;
 
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
+    display: none
+  }
+`
+
+export const MobileTitle = styled.h1`
+  @media (min-width: 450px) {
     display: none
   }
 `

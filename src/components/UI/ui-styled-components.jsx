@@ -20,6 +20,13 @@ export const StyledButton = styled.button`
   color: ${primaryFontColor};
 
   background-color: ${props => props.bgcolor};
+
+  @media (max-width: 450px) {
+    width: 6rem;
+    height: 2rem;
+
+    font-size: 1rem;
+  }
 `
 
 export const StyledForm = styled.form`
