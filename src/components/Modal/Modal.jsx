@@ -1,17 +1,22 @@
 
 import { useContext } from 'react';
-import { CloseModal, ContainerModal } from './styled-Modal';
+import { ContainerModal } from './styled-Modal';
 import DataController from '../../context/controller';
 import { Link, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player'
 import { StyledButton } from '../UI/ui-styled-components';
 import { highlightColorRed } from '../UI/variables';
+import NotFound from '../NotFound/NotFound';
 
 export default function Modal() {
     const { dataVideos } = useContext(DataController);
     const { id } = useParams()
     const index = dataVideos[id - 1]
     const url = index.url
+
+    if (!index) {
+        return <NotFound />
+    }
 
     return (
         <ContainerModal>

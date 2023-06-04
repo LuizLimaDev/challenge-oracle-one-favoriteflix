@@ -1,6 +1,5 @@
 
 import { styled } from 'styled-components';
-import { primaryFontColor } from '../UI/variables';
 
 export const ContainerModal = styled.div`
     width: 100vw;
@@ -14,5 +13,5 @@ export const ContainerModal = styled.div`
     top: 0;
     margin: 0;
 
-    background-color: rgba(0,0,0, .2);
+    background-color: rgba(0,0,0, .6);
 `
