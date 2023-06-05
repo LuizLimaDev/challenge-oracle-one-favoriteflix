@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
   border-radius: 1.875rem;
   border: none;
 
-  font-size: 1.1rem;
+  font-size: ${props => props.fontSize || '1.1rem'};
   font-weight: bold;
   color: ${primaryFontColor};
 

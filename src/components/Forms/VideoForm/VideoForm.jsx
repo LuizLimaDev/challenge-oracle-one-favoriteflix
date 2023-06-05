@@ -108,7 +108,7 @@ export default function VideoForm() {
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.5rem" }}>
           <StyledButton bgcolor={secondaryGray}>Limpar</StyledButton>
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
-          <Link to="/newcategory"><StyledButton bgcolor={secondaryGray}>+ Categoria</StyledButton></Link>
+          <Link to="/newcategory"><StyledButton bgcolor={secondaryGray} fontSize='1rem'>+ Categoria</StyledButton></Link>
         </div>
 
       </StyledForm>
