@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import SelectCategory from '../SelectCategory/SelectCategory';
-import { highlightColorRed, secondaryGray } from '../../UI/variables';
+import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../UI/variables';
 import { StyledForm, StyledTextArea, StyledButton, StyledTextField, Warning } from '../../UI/ui-styled-components';
 import DataController from '../../../context/controller';
 
@@ -13,15 +13,17 @@ export default function VideoForm() {
     updateVideo
   } = useContext(DataController)
 
-  const { id } = useParams('')
+  let { id } = useParams('')
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
   const [poster, setposter] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
   const [warning, setWarning] = useState(false)
+  const nativage = useNavigate()
 
   useEffect(() => {
+
     if (id !== undefined) {
       setTitle(dataVideos[id - 1].title)
       setUrl(dataVideos[id - 1].url)
@@ -29,6 +31,7 @@ export default function VideoForm() {
       setCategory(dataVideos[id - 1].category)
       setDescription(dataVideos[id - 1].description)
     }
+
   }, [id, dataVideos])
 
   async function onSave(event) {
@@ -45,17 +48,20 @@ export default function VideoForm() {
     if (id !== undefined) {
       updateVideo(id, video)
 
+      setTimeout(() => {
+        nativage('/editvideos')
+      }, 2000)
     } else {
       postVideo(video)
+
+      setTitle('')
+      setUrl('')
+      setposter('')
+      setCategory('')
+      setDescription('')
     }
 
     videoData()
-
-    setTitle('')
-    setUrl('')
-    setposter('')
-    setCategory('')
-    setDescription('')
 
     setWarning(true)
     setTimeout(() => {
@@ -115,10 +121,11 @@ export default function VideoForm() {
           <StyledButton bgcolor={secondaryGray}>Limpar</StyledButton>
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
           <Link to="/newcategory"><StyledButton bgcolor={secondaryGray} fontSize='1rem'>+ Categoria</StyledButton></Link>
+          <Link to="/"><StyledButton bgcolor={secondaryFontColor} fontSize='1rem'>Voltar</StyledButton></Link>
         </div>
 
         <Warning display={warning ? 'flex' : 'none'}>
-          <h3>Vídeo adicionado com sucesso!</h3>
+          <h3>Vídeo {id ? 'editado' : 'adicionado'} com sucesso!</h3>
         </Warning>
 
       </StyledForm>

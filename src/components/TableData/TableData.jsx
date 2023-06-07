@@ -1,8 +1,14 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { Link } from "react-router-dom";
+import { StyledButton } from "../UI/ui-styled-components";
+import { highlightColorRed, secondaryGray } from "../UI/variables";
+import { DeleteModal, WarningModal } from "./styled-TableData";
+import { useEffect, useState } from "react";
 
 export default function TableData({ dataType, deleteData, tableType }) {
-
+  const [warning, setWarning] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [elementId, setElementId] = useState();
   const tableElementType = tableType;
 
   function createDate(id, name, description, edit, remove) {
@@ -16,8 +22,18 @@ export default function TableData({ dataType, deleteData, tableType }) {
   ];
 
   function deleteElement(id) {
-    deleteData(id)
+    setWarning(true)
+    setElementId(id);
   }
+
+  useEffect(() => {
+    if (confirmDelete) {
+      deleteData(elementId);
+      setWarning(false);
+      setConfirmDelete(false);
+    }
+  }, [confirmDelete, elementId, deleteData]);
+
 
   return (
     <div style={{ display: "flex", alignContent: "start", justifyContent: "center" }}>
@@ -64,7 +80,22 @@ export default function TableData({ dataType, deleteData, tableType }) {
         </Table>
       </TableContainer >
 
+      <DeleteModal display={warning ? 'flex' : 'none'}>
+        <WarningModal>
+          <h3>Você realmente deseja remover?</h3>
 
+          <div>
+            <StyledButton
+              bgcolor={highlightColorRed}
+              style={{ marginRight: '1rem' }}
+              onClick={() => setConfirmDelete(true)}
+            >
+              Sim
+            </StyledButton>
+            <StyledButton bgcolor={secondaryGray}>Não</StyledButton>
+          </div>
+        </WarningModal>
+      </DeleteModal>
     </div>
   )
 }
