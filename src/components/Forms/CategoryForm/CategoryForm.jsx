@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import DataController from '../../../context/controller';
-import { StyledButton, StyledForm, StyledSectionTitle, StyledTextField } from '../../UI/ui-styled-components';
+import { StyledButton, StyledForm, StyledSectionTitle, StyledTextField, Warning } from '../../UI/ui-styled-components';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
 import { StyledColorField, StyledContainerColor, StyledLabelColor } from './styled-CategoryForm';
 
@@ -17,6 +17,7 @@ export default function CategoryForm() {
   const [categoryTitle, setCategoryTitle] = useState('')
   const [color, setColor] = useState('')
   const [sended, setSended] = useState(false)
+  const [warning, setWarning] = useState(false)
 
   useEffect(() => {
     if (id !== undefined) {
@@ -40,8 +41,15 @@ export default function CategoryForm() {
     }
 
     categoriesData()
-    setSended(true)
+
     setCategoryTitle('')
+    setWarning(true);
+
+    setTimeout(() => {
+      setWarning(false);
+
+      setSended(true)
+    }, 2000)
   }
 
   return (
@@ -70,8 +78,16 @@ export default function CategoryForm() {
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
           <StyledButton bgcolor={secondaryGray} >Limpar</StyledButton>
         </div>
+
+        <Warning display={warning ? 'flex' : 'none'}>
+          <h3 style={{ padding: '.5rem' }}>Categoria adicionada com sucesso!</h3>
+        </Warning>
+
+        {sended && <Navigate to='/newvideo' />}
       </StyledForm>
-      {sended && <Navigate to='/newvideo' />}
+
+
+
     </>
   )
 }

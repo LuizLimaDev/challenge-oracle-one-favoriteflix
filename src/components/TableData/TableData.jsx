@@ -1,12 +1,13 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function createDate(id, name, description, edit, remove) {
-  return { id, name, description, edit, remove };
-}
-
 export default function TableData({ dataType, deleteData, tableType }) {
+
   const tableElementType = tableType;
+
+  function createDate(id, name, description, edit, remove) {
+    return { id, name, description, edit, remove };
+  }
 
   const rows = [
     dataType.map((item) => (
@@ -62,6 +63,8 @@ export default function TableData({ dataType, deleteData, tableType }) {
           </TableBody>
         </Table>
       </TableContainer >
+
+
     </div>
   )
 }

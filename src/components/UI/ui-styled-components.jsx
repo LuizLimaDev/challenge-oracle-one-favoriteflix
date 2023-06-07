@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryFontColor, primaryGray } from "./variables";
+import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from "./variables";
 
 export const StyledLogo = styled.h1`
   filter: drop-shadow(0 0 0.75rem ${primaryGray});
@@ -60,4 +60,16 @@ color: ${primaryFontColor};
 text-align: center;
 font-weight: bold;
 margin-top: 1.25rem;
+`
+export const Warning = styled.div`
+    display: ${props => props.display};
+    align-items: center;
+    justify-content: center;
+
+    width: 350px;
+    height: 35px;
+    margin-top: 1.5rem;
+    
+    background-color: ${secondaryGray};
+    border-top: 5px solid ${highlightColorGreen};
 `

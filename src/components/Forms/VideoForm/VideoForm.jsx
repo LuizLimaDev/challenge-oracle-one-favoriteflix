@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
-import { StyledForm, StyledTextArea, StyledButton, StyledTextField } from '../../UI/ui-styled-components';
+import { StyledForm, StyledTextArea, StyledButton, StyledTextField, Warning } from '../../UI/ui-styled-components';
 import DataController from '../../../context/controller';
 
 export default function VideoForm() {
@@ -19,6 +19,7 @@ export default function VideoForm() {
   const [poster, setposter] = useState('')
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
+  const [warning, setWarning] = useState(false)
 
   useEffect(() => {
     if (id !== undefined) {
@@ -55,6 +56,11 @@ export default function VideoForm() {
     setposter('')
     setCategory('')
     setDescription('')
+
+    setWarning(true)
+    setTimeout(() => {
+      setWarning(false)
+    }, 2000)
   }
 
   return (
@@ -110,6 +116,10 @@ export default function VideoForm() {
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
           <Link to="/newcategory"><StyledButton bgcolor={secondaryGray} fontSize='1rem'>+ Categoria</StyledButton></Link>
         </div>
+
+        <Warning display={warning ? 'flex' : 'none'}>
+          <h3>Vídeo adicionado com sucesso!</h3>
+        </Warning>
 
       </StyledForm>
     </>

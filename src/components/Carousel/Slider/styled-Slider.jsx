@@ -16,6 +16,8 @@ export const StyledCategoryTitle = styled.h2`
 
 export const StyledContainerCard = styled.div`
   width: 19rem;
+  height: 12rem;
+
 
   margin-right:  1rem;
 `
@@ -30,6 +32,7 @@ export const StyledVideoTitle = styled.h3`
 
 export const StyledVideoImg = styled.img`
   width: 19rem;
+  height: 100%;
   margin-left: 1rem;
   border-radius: 1.625rem;
 `
