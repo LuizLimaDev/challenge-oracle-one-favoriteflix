@@ -14,7 +14,7 @@
 </ol>
 </p><br>
 
-![Desktop](https://images2.imgbox.com/b2/f8/r3KBERLY_o.png)
+![Desktop](https://imagizer.imageshack.com/img924/644/LE1Juo.png)
 
 <h2 align="center"> 📚 Bibliotécas </h2>
 
