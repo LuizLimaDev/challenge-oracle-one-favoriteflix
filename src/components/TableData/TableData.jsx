@@ -92,7 +92,10 @@ export default function TableData({ dataType, deleteData, tableType }) {
             >
               Sim
             </StyledButton>
-            <StyledButton bgcolor={secondaryGray}>Não</StyledButton>
+            <StyledButton
+              bgcolor={secondaryGray}
+              onClick={() => setWarning(false)}
+            >Não</StyledButton>
           </div>
         </WarningModal>
       </DeleteModal>
