@@ -13,7 +13,7 @@ export const DeleteModal = styled.div`
     display: ${props => props.display};
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
 
     width: 100vw;
     height: 100vh;
@@ -32,6 +32,7 @@ export const WarningModal = styled.div`
     padding: 1.5rem;
     border-radius: 5px;
     margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
     background-color: ${secondaryFontColor};
 `

@@ -21,6 +21,7 @@ export const StyledButton = styled.button`
   height: 2rem;
   border-radius: 1.875rem;
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   font-size: ${props => props.fontSize || '1.1rem'};
   font-weight: bold;

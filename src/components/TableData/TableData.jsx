@@ -1,9 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useTableData from '../../hooks/useTableData';
-import { StyledButton } from '../UI/ui-styled-components';
-import { highlightColorRed, secondaryGray } from '../UI/variables';
-import { DeleteModal, StyledContainer, WarningModal } from './styled-TableData';
+import ModalDelete from '../ModalDelete/ModalDelete';
+import { StyledContainer } from './styled-TableData';
 
 export default function TableData({ dataType, deleteData, tableType }) {
   const {
@@ -68,25 +67,11 @@ export default function TableData({ dataType, deleteData, tableType }) {
         </Table>
       </TableContainer >
 
-      <DeleteModal display={warning ? 'flex' : 'none'}>
-        <WarningModal>
-          <h3>Você realmente deseja remover?</h3>
-
-          <div>
-            <StyledButton
-              bgcolor={highlightColorRed}
-              style={{ marginRight: '1rem' }}
-              onClick={() => setConfirmDelete(true)}
-            >
-              Sim
-            </StyledButton>
-            <StyledButton
-              bgcolor={secondaryGray}
-              onClick={() => setWarning(false)}
-            >Não</StyledButton>
-          </div>
-        </WarningModal>
-      </DeleteModal>
+      <ModalDelete
+        warning={warning}
+        setConfirmDelete={setConfirmDelete}
+        setWarning={setWarning}
+      />
     </StyledContainer>
   )
 }
