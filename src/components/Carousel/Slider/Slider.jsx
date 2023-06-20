@@ -1,9 +1,9 @@
-import { StyledSection, StyledCategoryTitle, StyledContainerCard, StyledVideoTitle, StyledVideoImg } from "./styled-Slider";
-import Slick from "react-slick";
-import settings from "./settings";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import Slick from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import settings from './settings';
+import { StyledCategoryTitle, StyledContainerCard, StyledSection, StyledVideoImg, StyledVideoTitle } from './styled-Slider';
 
 export default function Slider({ title, color, videos }) {
 

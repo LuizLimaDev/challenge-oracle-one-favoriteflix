@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import { styled } from 'styled-components'
 import banner from '../../assets/banner.jpg'
 
 export const StyledContainer = styled.div`
@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
   align-items: center;
 
   position: relative;
-  width: 90%;
+  width: 85%;
   height: 25rem;
   padding: .5rem 6rem;
   margin: 1.25rem auto;

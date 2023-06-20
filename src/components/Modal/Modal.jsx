@@ -1,12 +1,12 @@
 
 import { useContext } from 'react';
-import { ContainerModal } from './styled-Modal';
-import DataController from '../../context/controller';
+import ReactPlayer from 'react-player';
 import { Link, useParams } from 'react-router-dom';
-import ReactPlayer from 'react-player'
+import DataController from '../../context/controller';
+import NotFound from '../NotFound/NotFound';
 import { StyledButton } from '../UI/ui-styled-components';
 import { highlightColorRed } from '../UI/variables';
-import NotFound from '../NotFound/NotFound';
+import { ContainerModal } from './styled-Modal';
 
 export default function Modal() {
     const { dataVideos } = useContext(DataController);

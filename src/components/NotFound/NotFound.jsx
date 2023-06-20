@@ -9,7 +9,9 @@ export default function NotFound() {
                 alt="Página não encontrada!"
                 style={{ width: '15rem' }}
             />
-            <h1 style={{ marginTop: '1.5rem' }}>Ops.. página não encontrada!</h1>
+            <h1 style={{ marginTop: '1.5rem' }}>
+                Ops.. página não encontrada!
+            </h1>
         </StyledContainer>
     );
 }

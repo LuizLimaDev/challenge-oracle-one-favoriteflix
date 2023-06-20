@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import Slider from "../Slider/Slider";
-import DataController from "../../../context/controller";
-import Loading from "../../Loading/Loading";
-import { ContainerCarousel } from "./styled-Carousel";
+import { useContext } from 'react';
+import DataController from '../../../context/controller';
+import Loading from '../../Loading/Loading';
+import Slider from '../Slider/Slider';
+import { ContainerCarousel } from './styled-Carousel';
 
 export default function Carousel() {
   const { dataVideos, dataCategories, isLoading } = useContext(DataController)

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import SelectCategory from '../SelectCategory/SelectCategory';
-import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../UI/variables';
-import { StyledForm, StyledTextArea, StyledButton, StyledTextField, Warning } from '../../UI/ui-styled-components';
 import DataController from '../../../context/controller';
+import { StyledButton, StyledForm, StyledTextArea, StyledTextField, Warning } from '../../UI/ui-styled-components';
+import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../UI/variables';
+import SelectCategory from '../SelectCategory/SelectCategory';
+import { StyledContainerButtons } from './styled-VideoForm';
 
 export default function VideoForm() {
   const {
@@ -73,9 +74,9 @@ export default function VideoForm() {
     <>
       <StyledForm onSubmit={onSave} >
         <StyledTextField
-          id="title"
-          type="text"
-          placeholder="Título"
+          id='title'
+          type='text'
+          placeholder='Título'
           value={title}
           onChange={(event) => {
             setTitle(event.target.value);
@@ -83,9 +84,9 @@ export default function VideoForm() {
           required
         />
         <StyledTextField
-          id="videoUrl"
-          type="url"
-          placeholder="Link do vídeo"
+          id='videoUrl'
+          type='url'
+          placeholder='Link do vídeo'
           value={url}
           onChange={(event) => {
             setUrl(event.target.value);
@@ -93,9 +94,9 @@ export default function VideoForm() {
           required
         />
         <StyledTextField
-          id="posterUrl"
-          type="url"
-          placeholder="Link da imagem"
+          id='posterUrl'
+          type='url'
+          placeholder='Link da imagem'
           value={poster}
           onChange={(event) => {
             setposter(event.target.value);
@@ -110,19 +111,19 @@ export default function VideoForm() {
           required
         />
         <StyledTextArea
-          id="description"
-          placeholder="Descrição"
+          id='description'
+          placeholder='Descrição'
           value={description}
           onChange={(event) => {
             setDescription(event.target.value);
           }}
         />
-        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.5rem" }}>
+        <StyledContainerButtons>
           <StyledButton bgcolor={secondaryGray}>Limpar</StyledButton>
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
-          <Link to="/newcategory"><StyledButton bgcolor={secondaryGray} fontSize='1rem'>+ Categoria</StyledButton></Link>
-          <Link to="/"><StyledButton bgcolor={secondaryFontColor} fontSize='1rem'>Voltar</StyledButton></Link>
-        </div>
+          <Link to='/newcategory'><StyledButton bgcolor={secondaryGray} fontSize='1rem'>+ Categoria</StyledButton></Link>
+          <Link to='/'><StyledButton bgcolor={secondaryFontColor} fontSize='1rem'>Voltar</StyledButton></Link>
+        </StyledContainerButtons>
 
         <Warning display={warning ? 'flex' : 'none'}>
           <h3>Vídeo {id ? 'editado' : 'adicionado'} com sucesso!</h3>

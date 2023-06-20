@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import DataController from '../../../context/controller';
 import { StyledButton, StyledForm, StyledSectionTitle, StyledTextField, Warning } from '../../UI/ui-styled-components';
 import { highlightColorRed, secondaryGray } from '../../UI/variables';
-import { StyledColorField, StyledContainerColor, StyledLabelColor } from './styled-CategoryForm';
+import { StyledColorField, StyledContainerButtons, StyledContainerColor, StyledLabelColor } from './styled-CategoryForm';
 
 export default function CategoryForm() {
   const {
@@ -54,7 +54,7 @@ export default function CategoryForm() {
 
   return (
     <>
-      <StyledSectionTitle style={{ marginTop: '1.25rem' }}>
+      <StyledSectionTitle>
         {id === undefined ? 'Qual categoria deseja adicionar?' : 'Editando categoria!'}
       </StyledSectionTitle>
 
@@ -73,11 +73,11 @@ export default function CategoryForm() {
           />
         </StyledContainerColor>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', margin: '1.5rem 0 3rem' }}>
+        <StyledContainerButtons >
           <Link to='/newvideo'><StyledButton bgcolor={secondaryGray} >Voltar</StyledButton></Link>
           <StyledButton bgcolor={highlightColorRed}>Salvar</StyledButton>
           <StyledButton bgcolor={secondaryGray} >Limpar</StyledButton>
-        </div>
+        </StyledContainerButtons>
 
         <Warning display={warning ? 'flex' : 'none'}>
           <h3 style={{ padding: '.5rem' }}>Categoria adicionada com sucesso!</h3>

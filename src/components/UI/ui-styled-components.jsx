@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from "./variables";
+import styled from 'styled-components';
+import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from './variables';
 
 export const StyledLogo = styled.h1`
   filter: drop-shadow(0 0 0.75rem ${primaryGray});
@@ -40,7 +40,7 @@ export const StyledForm = styled.form`
 `
 
 export const StyledTextField = styled.input`
-  width: 90%;
+  width: 85%;
   height: 2rem;
   padding-left: .5rem;
 
@@ -48,7 +48,7 @@ export const StyledTextField = styled.input`
 `
 
 export const StyledTextArea = styled.textarea`
-  width: 90%;
+  width: 85%;
   height: 5rem;
   padding: 0.3rem .5rem;
 

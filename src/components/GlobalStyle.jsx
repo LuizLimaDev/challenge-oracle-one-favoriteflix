@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { primaryFontColor, tertiaryGray } from "./UI/variables";
+import { createGlobalStyle } from 'styled-components';
+import { primaryFontColor, tertiaryGray } from './UI/variables';
 
 
 export const GlobalStyle = createGlobalStyle`

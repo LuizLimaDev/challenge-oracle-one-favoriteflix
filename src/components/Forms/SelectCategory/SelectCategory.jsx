@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import DataController from "../../../context/controller";
+import { useContext } from 'react';
+import DataController from '../../../context/controller';
 import { StyledSelect } from './styled-SelectCategory';
 
 export default function SelectCategory({ alterated, selectedOption }) {

@@ -1,9 +1,9 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { Link } from "react-router-dom";
-import { StyledButton } from "../UI/ui-styled-components";
-import { highlightColorRed, secondaryGray } from "../UI/variables";
-import { DeleteModal, WarningModal } from "./styled-TableData";
-import { useEffect, useState } from "react";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { StyledButton } from '../UI/ui-styled-components';
+import { highlightColorRed, secondaryGray } from '../UI/variables';
+import { DeleteModal, StyledContainer, WarningModal } from './styled-TableData';
 
 export default function TableData({ dataType, deleteData, tableType }) {
   const [warning, setWarning] = useState(false);
@@ -36,15 +36,15 @@ export default function TableData({ dataType, deleteData, tableType }) {
 
 
   return (
-    <div style={{ display: "flex", alignContent: "start", justifyContent: "center" }}>
-      <TableContainer component={Paper} sx={{ width: "90%", margin: "4rem 0.5rem" }}>
-        <Table sx={{ minWidth: 360 }} size="small" aria-label="a dense table">
+    <StyledContainer>
+      <TableContainer component={Paper} sx={{ width: '85%', margin: '4rem 0.5rem' }}>
+        <Table sx={{ minWidth: 360 }} size='small' aria-label='a dense table'>
           <TableHead>
             <TableRow>
               <TableCell><strong>Nome</strong></TableCell>
-              {tableElementType === 'videos' && <TableCell align="center"><strong>Descrição</strong></TableCell>}
-              <TableCell align="center"><strong>Editar</strong></TableCell>
-              <TableCell align="center"><strong>Remover</strong></TableCell>
+              {tableElementType === 'videos' && <TableCell align='center'><strong>Descrição</strong></TableCell>}
+              <TableCell align='center'><strong>Editar</strong></TableCell>
+              <TableCell align='center'><strong>Remover</strong></TableCell>
             </TableRow>
           </TableHead>
 
@@ -54,12 +54,12 @@ export default function TableData({ dataType, deleteData, tableType }) {
                 key={item.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row" align="left" >
+                <TableCell component='th' scope='row' align='left' >
                   {item.name}
                 </TableCell>
-                {tableElementType === 'videos' && <TableCell align="center">{item.description}</TableCell>}
+                {tableElementType === 'videos' && <TableCell align='center'>{item.description}</TableCell>}
 
-                <TableCell align="center">
+                <TableCell align='center'>
                   <Link to={tableType === 'categories'
                     ? `/newcategory/${item.id}`
                     : `/newvideo/${item.id}`}
@@ -69,9 +69,9 @@ export default function TableData({ dataType, deleteData, tableType }) {
                 </TableCell>
 
                 <TableCell
-                  align="center"
+                  align='center'
                   onClick={(e) => deleteElement(item.id)}
-                  style={{ cursor: "pointer" }}>
+                  style={{ cursor: 'pointer' }}>
                   {item.remove}
                 </TableCell>
               </TableRow>
@@ -99,6 +99,6 @@ export default function TableData({ dataType, deleteData, tableType }) {
           </div>
         </WarningModal>
       </DeleteModal>
-    </div>
+    </StyledContainer>
   )
 }
