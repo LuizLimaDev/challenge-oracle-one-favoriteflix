@@ -73,3 +73,7 @@ export const Warning = styled.div`
     background-color: ${secondaryGray};
     border-top: 5px solid ${highlightColorGreen};
 `
+
+export const StyledTextWarning = styled.p`
+  margin: .5rem 0 4rem 8rem;
+`

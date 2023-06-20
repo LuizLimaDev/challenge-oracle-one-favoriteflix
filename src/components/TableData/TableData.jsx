@@ -11,13 +11,13 @@ export default function TableData({ dataType, deleteData, tableType }) {
   const [elementId, setElementId] = useState();
   const tableElementType = tableType;
 
-  function createDate(id, name, description, edit, remove) {
-    return { id, name, description, edit, remove };
+  function createDate(id, name, description, edit, remove, database) {
+    return { id, name, description, edit, remove, database };
   }
 
   const rows = [
     dataType.map((item) => (
-      createDate(item.id, item.title, item.description, 'Editar', 'Remover')
+      createDate(item.id, item.title, item.description, 'Editar', 'Remover', item.database)
     ))
   ];
 
@@ -37,7 +37,7 @@ export default function TableData({ dataType, deleteData, tableType }) {
 
   return (
     <StyledContainer>
-      <TableContainer component={Paper} sx={{ width: '85%', margin: '4rem 0.5rem' }}>
+      <TableContainer component={Paper} sx={{ width: '85%', margin: '4rem .5rem .5rem .5rem ' }}>
         <Table sx={{ minWidth: 360 }} size='small' aria-label='a dense table'>
           <TableHead>
             <TableRow>
@@ -59,21 +59,34 @@ export default function TableData({ dataType, deleteData, tableType }) {
                 </TableCell>
                 {tableElementType === 'videos' && <TableCell align='center'>{item.description}</TableCell>}
 
-                <TableCell align='center'>
-                  <Link to={tableType === 'categories'
-                    ? `/newcategory/${item.id}`
-                    : `/newvideo/${item.id}`}
-                  >
-                    {item.edit}
-                  </Link>
-                </TableCell>
+                {!item.database
+                  ? <>
+                    <TableCell align='center'>
+                      <Link to={tableType === 'categories'
+                        ? `/newcategory/${item.id}`
+                        : `/newvideo/${item.id}`}
+                      >
+                        {item.edit}
+                      </Link>
+                    </TableCell>
 
-                <TableCell
-                  align='center'
-                  onClick={(e) => deleteElement(item.id)}
-                  style={{ cursor: 'pointer' }}>
-                  {item.remove}
-                </TableCell>
+                    <TableCell
+                      align='center'
+                      onClick={(e) => deleteElement(item.id)}
+                      style={{ cursor: 'pointer' }}>
+                      {item.remove}
+                    </TableCell>
+                  </>
+                  : <>
+                    <TableCell align='center'>
+                      *
+                    </TableCell>
+
+                    <TableCell align='center'>
+                      *
+                    </TableCell>
+                  </>
+                }
               </TableRow>
             ))}
           </TableBody>

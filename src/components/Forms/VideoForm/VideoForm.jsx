@@ -43,7 +43,8 @@ export default function VideoForm() {
       title,
       url,
       poster,
-      description
+      description,
+      database: false
     }
 
     if (id !== undefined) {

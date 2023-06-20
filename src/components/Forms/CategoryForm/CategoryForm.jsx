@@ -15,7 +15,7 @@ export default function CategoryForm() {
   const { id } = useParams()
 
   const [categoryTitle, setCategoryTitle] = useState('')
-  const [color, setColor] = useState('')
+  const [color, setColor] = useState()
   const [sended, setSended] = useState(false)
   const [warning, setWarning] = useState(false)
 
@@ -32,6 +32,7 @@ export default function CategoryForm() {
     const data = {
       title: categoryTitle,
       color: color,
+      database: false
     };
 
     if (id !== undefined) {
@@ -63,6 +64,7 @@ export default function CategoryForm() {
           placeholder='Título'
           value={categoryTitle}
           onChange={event => setCategoryTitle(event.target.value)}
+          required
         />
         <StyledContainerColor>
           <StyledLabelColor>Cor</StyledLabelColor>
@@ -70,6 +72,7 @@ export default function CategoryForm() {
             type='color'
             value={color}
             onChange={event => setColor(event.target.value)}
+            required
           />
         </StyledContainerColor>
 
@@ -80,7 +83,9 @@ export default function CategoryForm() {
         </StyledContainerButtons>
 
         <Warning display={warning ? 'flex' : 'none'}>
-          <h3 style={{ padding: '.5rem' }}>Categoria adicionada com sucesso!</h3>
+          <h3 style={{ padding: '.5rem' }}>
+            {id ? 'Categoria editada com sucesso!' : 'Categoria adicionada com sucesso!'}
+          </h3>
         </Warning>
 
         {sended && <Navigate to='/newvideo' />}
