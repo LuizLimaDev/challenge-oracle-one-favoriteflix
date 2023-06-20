@@ -38,6 +38,8 @@ export const StyledContainerDescription = styled.div`
 `
 
 export const MobileTitle = styled.h1`
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+
   @media (min-width: 450px) {
     display: none
   }

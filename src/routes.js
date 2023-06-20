@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Modal from './components/Modal/Modal';
+import ModalPlayVideo from './components/ModalPlayVideo/ModalPlayVideo';
 import NotFound from './components/NotFound/NotFound';
 import EditData from './pages/EditData';
 import Home from './pages/Home';
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/playvideo/:id',
-                element: <Modal />
+                element: <ModalPlayVideo />
             },
             {
                 path: '*',

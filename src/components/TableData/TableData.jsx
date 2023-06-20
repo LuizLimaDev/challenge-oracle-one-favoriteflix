@@ -1,43 +1,23 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTableData from '../../hooks/useTableData';
 import { StyledButton } from '../UI/ui-styled-components';
 import { highlightColorRed, secondaryGray } from '../UI/variables';
 import { DeleteModal, StyledContainer, WarningModal } from './styled-TableData';
 
 export default function TableData({ dataType, deleteData, tableType }) {
-  const [warning, setWarning] = useState(false);
-  const [confirmDelete, setConfirmDelete] = useState(false);
-  const [elementId, setElementId] = useState();
-  const tableElementType = tableType;
-
-  function createDate(id, name, description, edit, remove, database) {
-    return { id, name, description, edit, remove, database };
-  }
-
-  const rows = [
-    dataType.map((item) => (
-      createDate(item.id, item.title, item.description, 'Editar', 'Remover', item.database)
-    ))
-  ];
-
-  function deleteElement(id) {
-    setWarning(true)
-    setElementId(id);
-  }
-
-  useEffect(() => {
-    if (confirmDelete) {
-      deleteData(elementId);
-      setWarning(false);
-      setConfirmDelete(false);
-    }
-  }, [confirmDelete, elementId, deleteData]);
-
+  const {
+    warning,
+    setWarning,
+    setConfirmDelete,
+    tableElementType,
+    rows,
+    deleteElement
+  } = useTableData({ dataType, deleteData, tableType });
 
   return (
     <StyledContainer>
-      <TableContainer component={Paper} sx={{ width: '85%', margin: '4rem .5rem .5rem .5rem ' }}>
+      <TableContainer component={Paper} sx={{ width: '100%', margin: '1.5rem .5rem .5rem .5rem ' }}>
         <Table sx={{ minWidth: 360 }} size='small' aria-label='a dense table'>
           <TableHead>
             <TableRow>
@@ -78,13 +58,8 @@ export default function TableData({ dataType, deleteData, tableType }) {
                     </TableCell>
                   </>
                   : <>
-                    <TableCell align='center'>
-                      *
-                    </TableCell>
-
-                    <TableCell align='center'>
-                      *
-                    </TableCell>
+                    <TableCell align='center'>*</TableCell>
+                    <TableCell align='center'>*</TableCell>
                   </>
                 }
               </TableRow>

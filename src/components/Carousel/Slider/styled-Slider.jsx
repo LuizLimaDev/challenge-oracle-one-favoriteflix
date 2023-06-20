@@ -12,6 +12,7 @@ export const StyledCategoryTitle = styled.h2`
 
   font-size: 1.25rem;
   color: ${props => props.color};
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 `
 
 export const StyledContainerCard = styled.div`

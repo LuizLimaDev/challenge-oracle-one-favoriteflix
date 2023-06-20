@@ -11,8 +11,7 @@ export const StyledHeader = styled.header`
 
   margin: 0 auto;
 
-  width: 100%;
-  max-width: 1440px;
+  width: 90%;
   height: 6vh;
   padding: 1.3rem 2rem;
   border-bottom-left-radius: 1.5rem;

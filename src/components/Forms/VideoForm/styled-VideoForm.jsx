@@ -6,7 +6,7 @@ export const StyledContainerButtons = styled.div`
     justify-content: center;
     gap: 1rem;
 
-    margin-top: 1.5rem;
+    margin: 1.5rem 0 1.5rem 0;
 
     @media (max-width: 450px) {
     flex-wrap: wrap;

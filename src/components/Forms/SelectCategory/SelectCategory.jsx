@@ -19,7 +19,6 @@ export default function SelectCategory({ alterated, selectedOption }) {
           </option>
         )
       })}
-
     </StyledSelect>
   )
 }

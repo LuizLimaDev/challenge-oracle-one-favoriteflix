@@ -1,75 +1,27 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import DataController from '../../../context/controller';
-import { StyledButton, StyledForm, StyledTextArea, StyledTextField, Warning } from '../../UI/ui-styled-components';
+import { Link } from 'react-router-dom';
+import { StyledButton, StyledForm, StyledTextArea, StyledTextField } from '../../UI/ui-styled-components';
 import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../UI/variables';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { StyledContainerButtons } from './styled-VideoForm';
+import Toast from '../../Toast/Toast';
+import useVideoForm from '../../../hooks/useVideoForm';
 
 export default function VideoForm() {
   const {
-    postVideo,
-    videoData,
-    dataVideos,
-    updateVideo
-  } = useContext(DataController)
-
-  let { id } = useParams('')
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
-  const [poster, setposter] = useState('')
-  const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
-  const [warning, setWarning] = useState(false)
-  const nativage = useNavigate()
-
-  useEffect(() => {
-
-    if (id !== undefined) {
-      setTitle(dataVideos[id - 1].title)
-      setUrl(dataVideos[id - 1].url)
-      setposter(dataVideos[id - 1].poster)
-      setCategory(dataVideos[id - 1].category)
-      setDescription(dataVideos[id - 1].description)
-    }
-
-  }, [id, dataVideos])
-
-  async function onSave(event) {
-    event.preventDefault();
-
-    const video = {
-      category,
-      title,
-      url,
-      poster,
-      description,
-      database: false
-    }
-
-    if (id !== undefined) {
-      updateVideo(id, video)
-
-      setTimeout(() => {
-        nativage('/editvideos')
-      }, 2000)
-    } else {
-      postVideo(video)
-
-      setTitle('')
-      setUrl('')
-      setposter('')
-      setCategory('')
-      setDescription('')
-    }
-
-    videoData()
-
-    setWarning(true)
-    setTimeout(() => {
-      setWarning(false)
-    }, 2000)
-  }
+    id,
+    title,
+    setTitle,
+    url,
+    setUrl,
+    poster,
+    setposter,
+    category,
+    setCategory,
+    description,
+    setDescription,
+    warning,
+    onSave
+  } = useVideoForm();
 
   return (
     <>
@@ -126,10 +78,12 @@ export default function VideoForm() {
           <Link to='/'><StyledButton bgcolor={secondaryFontColor} fontSize='1rem'>Voltar</StyledButton></Link>
         </StyledContainerButtons>
 
-        <Warning display={warning ? 'flex' : 'none'}>
-          <h3>Vídeo {id ? 'editado' : 'adicionado'} com sucesso!</h3>
-        </Warning>
-
+        <Toast
+          activation={warning}
+          condition={id}
+          textEdit='Editado com sucesso! Voltando para tela anterior.'
+          textAdd='Vídeo adicionado com sucesso!'
+        />
       </StyledForm>
     </>
   )

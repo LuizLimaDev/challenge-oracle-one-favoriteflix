@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from './variables';
 
+export const StyledContainerColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
 export const StyledLogo = styled.h1`
   filter: drop-shadow(0 0 0.75rem ${primaryGray});
 
@@ -56,10 +63,12 @@ export const StyledTextArea = styled.textarea`
   `
 
 export const StyledSectionTitle = styled.h3`
-color: ${primaryFontColor};
-text-align: center;
-font-weight: bold;
-margin-top: 1.25rem;
+  margin-top: 3rem;
+
+  color: ${primaryFontColor};
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
 `
 export const Warning = styled.div`
     display: ${props => props.display};
@@ -75,5 +84,5 @@ export const Warning = styled.div`
 `
 
 export const StyledTextWarning = styled.p`
-  margin: .5rem 0 4rem 8rem;
+  margin: .5rem 0 4rem 0;
 `

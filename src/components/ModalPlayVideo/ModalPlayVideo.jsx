@@ -4,11 +4,11 @@ import ReactPlayer from 'react-player';
 import { Link, useParams } from 'react-router-dom';
 import DataController from '../../context/controller';
 import NotFound from '../NotFound/NotFound';
-import { StyledButton } from '../UI/ui-styled-components';
+import { StyledButton, StyledContainerColumn } from '../UI/ui-styled-components';
 import { highlightColorRed } from '../UI/variables';
 import { ContainerModal } from './styled-Modal';
 
-export default function Modal() {
+export default function ModalPlayVideo() {
     const { dataVideos } = useContext(DataController);
     const { id } = useParams()
     const index = dataVideos[id - 1]
@@ -20,12 +20,7 @@ export default function Modal() {
 
     return (
         <ContainerModal>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }}>
-
+            <StyledContainerColumn>
                 <h1 style={{ textAlign: 'center' }}>
                     {index.title}
                 </h1>
@@ -44,7 +39,7 @@ export default function Modal() {
                         Voltar
                     </StyledButton>
                 </Link>
-            </div>
+            </StyledContainerColumn>
         </ContainerModal>
     );
 }
