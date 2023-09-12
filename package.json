@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "json-server": "^0.17.3",
@@ -48,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.4",
+    "jest": "^27.5.1"
   }
 }

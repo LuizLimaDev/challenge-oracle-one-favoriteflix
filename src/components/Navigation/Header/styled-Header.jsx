@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { RxGear } from 'react-icons/rx';
 import { MdAddToQueue } from 'react-icons/md';
-import { highlightColorRed, primaryGray } from '../../UI/variables';
-import { primaryFontColor } from '../../UI/variables';
+import { highlightColorRed, primaryGray } from '../../../styles/variables';
+import { primaryFontColor } from '../../../styles/variables';
 
 export const StyledHeader = styled.header`
   display: flex;

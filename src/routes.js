@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
-import ModalPlayVideo from './components/ModalPlayVideo/ModalPlayVideo';
+import NewCategory from './pages/NewCategory/NewCategory'
+import App from './pages/Layout/App';
+import Home from './pages/Home/Home';
+import NewVideo from './pages/NewVideo/NewVideo';
+import EditData from './pages/EditData/EditData';
+import ModalPlayVideo from './components/ModalPlayVideo/ModalPlayVideo'
 import NotFound from './components/NotFound/NotFound';
-import EditData from './pages/EditData';
-import Home from './pages/Home';
-import NewCategory from './pages/NewCategory';
-import NewVideo from './pages/NewVideo';
 
 const router = createBrowserRouter([
     {

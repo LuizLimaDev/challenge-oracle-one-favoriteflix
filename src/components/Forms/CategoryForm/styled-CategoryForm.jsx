@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { secondaryFontColor } from '../../UI/variables'
+import { secondaryFontColor } from '../../../styles/variables'
 import { StyledTextField } from '../../UI/ui-styled-components'
 
 export const StyledContainerColor = styled.div`

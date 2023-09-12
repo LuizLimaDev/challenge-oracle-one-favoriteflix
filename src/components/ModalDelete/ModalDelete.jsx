@@ -1,6 +1,6 @@
 import { DeleteModal, WarningModal } from "../TableData/styled-TableData";
 import { StyledButton } from "../UI/ui-styled-components";
-import { highlightColorRed, secondaryGray } from "../UI/variables";
+import { highlightColorRed, secondaryGray } from "../../styles/variables";
 
 function ModalDelete({ warning, setConfirmDelete, setWarning }) {
     return (

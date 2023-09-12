@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import Loading from '../components/Loading/Loading';
-import TableVideo from '../components/TableData/TableData';
-import { StyledContainerColumn, StyledSectionTitle, StyledTextWarning } from '../components/UI/ui-styled-components';
-import DataController from '../context/controller';
+import Loading from '../../components/Loading/Loading';
+import TableVideo from '../../components/TableData/TableData';
+import { StyledContainerColumn, StyledSectionTitle, StyledTextWarning } from '../../components/UI/ui-styled-components';
+import DataController from '../../context/controller';
 
 export default function EditData() {
   const {

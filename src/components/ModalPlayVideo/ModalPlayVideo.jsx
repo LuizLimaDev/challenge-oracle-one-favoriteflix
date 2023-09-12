@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import DataController from '../../context/controller';
 import NotFound from '../NotFound/NotFound';
 import { StyledButton, StyledContainerColumn } from '../UI/ui-styled-components';
-import { highlightColorRed } from '../UI/variables';
+import { highlightColorRed } from '../../styles/variables';
 import { ContainerModal } from './styled-Modal';
 
 export default function ModalPlayVideo() {

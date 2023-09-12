@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { StyledButton, StyledForm, StyledTextArea, StyledTextField } from '../../UI/ui-styled-components';
-import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../UI/variables';
+import { highlightColorRed, secondaryFontColor, secondaryGray } from '../../../styles/variables';
 import SelectCategory from '../SelectCategory/SelectCategory';
 import { StyledContainerButtons } from './styled-VideoForm';
 import Toast from '../../Toast/Toast';

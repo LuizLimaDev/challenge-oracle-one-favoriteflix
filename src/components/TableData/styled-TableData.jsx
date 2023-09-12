@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { secondaryFontColor } from '../UI/variables';
+import { secondaryFontColor } from '../../styles/variables';
 
 export const StyledContainer = styled.div`
     display: flex;

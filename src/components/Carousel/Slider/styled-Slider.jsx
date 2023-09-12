@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { primaryFontColor } from '../../UI/variables'
+import { primaryFontColor } from '../../../styles/variables'
 
 export const StyledSection = styled.section`
 width: 90%;

@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useCategoryForm from '../../../hooks/useCategoryForm';
 import Toast from '../../Toast/Toast';
 import { StyledButton, StyledForm, StyledSectionTitle, StyledTextField } from '../../UI/ui-styled-components';
-import { highlightColorRed, secondaryGray } from '../../UI/variables';
+import { highlightColorRed, secondaryGray } from '../../../styles/variables';
 import { StyledColorField, StyledContainerButtons, StyledContainerColor, StyledLabelColor } from './styled-CategoryForm';
 
 export default function CategoryForm() {

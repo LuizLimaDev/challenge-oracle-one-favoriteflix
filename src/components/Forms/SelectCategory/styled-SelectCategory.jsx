@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { primaryGray, secondaryFontColor } from '../../UI/variables';
+import { primaryGray, secondaryFontColor } from '../../../styles/variables';
 
 export const StyledSelect = styled.select`
   width: 85%;

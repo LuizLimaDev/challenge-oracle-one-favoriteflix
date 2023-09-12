@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from './variables';
+import { highlightColorGreen, primaryFontColor, primaryGray, secondaryGray } from '../../styles/variables';
 
 export const StyledContainerColumn = styled.div`
   display: flex;
