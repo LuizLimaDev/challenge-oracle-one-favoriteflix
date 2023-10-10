@@ -14,7 +14,14 @@
 </ol>
 </p><br>
 
-![Desktop](https://imagizer.imageshack.com/img924/644/LE1Juo.png)
+
+<div align="center">
+
+<img src="https://i.imgur.com/Qs3zZJM.png" width="600" heigth="400" >
+  
+</div>
+
+<br><br>
 
 <h2 align="center"> 📚 Bibliotécas </h2>
 
